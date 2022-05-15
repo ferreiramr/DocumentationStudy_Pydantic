@@ -1,7 +1,7 @@
 import typing
 
-from pydantic import BaseModel, Field
 import sqlalchemy as sa
+from pydantic import BaseModel, Field
 from sqlalchemy.ext.declarative import declarative_base
 
 
@@ -29,4 +29,3 @@ pydantic_model = MyModel.from_orm(sql_model)
 print(pydantic_model.dict())
 
 print(pydantic_model.dict(by_alias=True))
-

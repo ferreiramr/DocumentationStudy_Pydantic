@@ -1,10 +1,9 @@
-from pydantic import BaseModel
 from typing import Any, Optional
-from pydantic.utils import GetterDict
 from xml.etree.ElementTree import fromstring
+
 from devtools import debug
-
-
+from pydantic import BaseModel
+from pydantic.utils import GetterDict
 
 xmlstring = """
 <User Id="2138">
@@ -12,6 +11,7 @@ xmlstring = """
     <LoggedIn Value="true" />
 </User>
 """
+
 
 class UserGetter(GetterDict):
 
@@ -28,6 +28,7 @@ class UserGetter(GetterDict):
             except (AttributeError, KeyError):
                 return default
 
+
 class User(BaseModel):
     Id: int
     Status: Optional[str]
@@ -39,8 +40,8 @@ class User(BaseModel):
         orm_mode = True
         getter_dict = UserGetter
 
-debug(fromstring(xmlstring))
 
+debug(fromstring(xmlstring))
 
 user = User.from_orm(fromstring(xmlstring))
 

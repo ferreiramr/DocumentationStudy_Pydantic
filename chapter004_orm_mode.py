@@ -1,8 +1,9 @@
 from typing import List
+
+from pydantic import BaseModel, constr
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.ext.declarative import declarative_base
-from pydantic import BaseModel, constr
 
 Base = declarative_base()
 
@@ -32,8 +33,8 @@ co_orm = CompanyOrm(
     domains=['example.com', 'foobar.com'],
 )
 print(co_orm)
-#> <models_orm_mode.CompanyOrm object at 0x7f0bdac44850>
+# > <models_orm_mode.CompanyOrm object at 0x7f0bdac44850>
 co_model = CompanyModel.from_orm(co_orm)
 print(co_model)
-#> id=123 public_key='foobar' name='Testing' domains=['example.com',
-#> 'foobar.com']
+# > id=123 public_key='foobar' name='Testing' domains=['example.com',
+# > 'foobar.com']

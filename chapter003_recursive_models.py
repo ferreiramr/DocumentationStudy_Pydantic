@@ -1,6 +1,7 @@
 from typing import List
-from pydantic import BaseModel
+
 from devtools import debug
+from pydantic import BaseModel
 
 
 class Foo(BaseModel):
@@ -16,6 +17,7 @@ class Bar(BaseModel):
 class Spam(BaseModel):
     foo: Foo
     bars: List[Bar]
+
 
 m = Spam(foo={'count': 4}, bars=[{'apple': 'x1'}, {'apple': 'x2'}])
 
